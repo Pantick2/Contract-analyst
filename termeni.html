@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions - Contract Shield</title>
+    <!-- Tailwind CSS pentru design modern -->
+    <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 p-6 md:p-12 font-sans flex flex-col min-h-screen justify-between">
+
+    <div class="max-w-3xl mx-auto bg-white p-6 md:p-12 rounded-2xl border border-gray-200 shadow-sm space-y-6 w-full">
+        <!-- Antet și Selector de Limbă local -->
+        <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+            <a href="../index.html" class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-1">← <span id="back-txt">Back to Analysis / Înapoi</span></a>
+            <select id="lang-page-select" class="bg-gray-50 border border-gray-200 rounded-xl p-2 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="RO">Română (RO)</option>
+                <option value="EN">English (EN)</option>
+            </select>
+        </div>
+
+        <!-- CONȚINUT DINAMIC SECȚIUNI -->
+        <article class="space-y-6">
+            <h1 id="p-title" class="text-3xl font-black text-gray-900 tracking-tight"></h1>
+            <p id="p-caption" class="text-xs font-bold text-gray-400 uppercase tracking-wider"></p>
+            <hr class="border-gray-100">
+            <div id="p-content" class="text-sm leading-relaxed text-gray-600 space-y-5"></div>
+        </article>
+    </div>
+
+    <!-- Subsol de pagină -->
+    <footer class="text-center text-[11px] text-gray-400 font-medium border-t border-gray-100 pt-6 mt-12 w-full max-w-3xl mx-auto" id="p-footer"></footer>
+
+    <!-- LOGICA DE TRADUCERE INTERNĂ -->
+    <script>
+        const dateLegale = {
+            RO: {
+                title: "⚖️ Termeni și Condiții de Utilizare",
+                caption: "Ultima actualizare: Iunie 2026 | Locație legală: Milton Keynes, UK",
+                back: "← Înapoi la Analiză",
+                footer: "🛡️ Asistent Contracte Freelanceri | Deținut de IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                content: `
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">1. ACCEPTAREA TERMENILOR ȘI JURISDICȚIA EXCLUSIVĂ</h3>
+                        <p>Prin accesarea, vizitarea sau utilizarea acestui website, sunteți de acord în mod expres și necondiționat să respectați prezenții Termeni și Condiții, precum și legislația aplicabilă din Anglia și Țara Galilor (English Law). Orice dispută care nu poate fi soluționată amiabil va fi trimisă spre soluționare exclusivă instanțelor de judecată competente din Milton Keynes, Regatul Unit (United Kingdom). Acordul de utilizare se consideră semnat digital în momentul în care bifați activ căsuța de confirmare de pe pagina principală a Platformei.</p>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">2. NATURA SERVICIULUI (DISCLAIMER LEGAL CRITIC)</h3>
+                        <p>Acest website este un instrument experimental bazat pe algoritmi de Inteligență Artificială (Google Gemini API), administrat și deținut în totalitate de IULIAN ICHIM-UNGUREANU (Alias Pantick), operând din Milton Keynes, UK.</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-2">
+                            <li><b>NU ESTE UN CABINET DE AVOCATURĂ:</b> Informațiile, traducerile, analizele de riscuri și sugestiile de renegociere generate de această Platformă au un scop strict informativ, orientativ și educațional.</li>
+                            <li><b>FĂRĂ CONSULTANȚĂ JURIDICĂ:</b> Conținutul generat NU constituie, sub nicio formă, consultanță juridică autorizată, asistență legală, servicii de audit contractual sau opinii de specialitate în sensul Legii nr. 51/1995.</li>
+                            <li><b>OBLIGAȚIA UTILIZATORULUI:</b> Utilizatorul poartă întreaga responsabilitate pentru decizia finală de a semna, modifica, respinge sau renegocia orice contract comercial. Se recomandă insistent consultarea unui avocat înainte de luarea oricărei decizii cu impact juridic sau financiar.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">3. FINANȚARE, MONETIZARE ȘI DONAȚII (LINKTREE)</h3>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><b>SCOPUL MONETIZĂRII:</b> Eventualele venituri realizate din reclame afișate sunt destinate strict acoperirii costurilor de mentenanță și servere necesare funcționării Platformei.</li>
+                            <li><b>DONAȚII PRIN PĂRȚI TERȚE:</b> Orice opțiune de donație accesibilă prin platforme externe (ex. Linktree) este complet voluntară. Fondurile pot fi redirecționate către entități terțe, fără ca acest lucru să confere utilizatorului statutul de client plătitor.</li>
+                            <li><b>FĂRĂ SERVICII PREMIUM SAU UPGRADE-URI:</b> Efectuarea unei donații nu deblochează funcționalități suplimentare, beneficii sau upgrade-uri de performanță pe Platformă. Toți utilizatorii au acces la exact aceeași interfață.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">4. GARANȚIA STRICTĂ DE NON-STOCARE A DATELOR</h3>
+                        <p><b>PROCESARE VOLATILĂ IN-MEMORY:</b> Documentele introduse și cheile API sunt procesate exclusiv în memoria temporară a browserului (sesiune). În momentul în care închideți tab-ul sau fereastra de browser, toate datele sunt șterse definitiv, instantaneu și irevocabil. Platforma nu deține baze de date pentru stocarea acestora.</p>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">5. LIMITAREA TOTALĂ A RĂSPUNDERII (DAMAGE CAP)</h3>
+                        <p>În măsura maximă permisă de legislația aplicabilă în Anglia și Țara Galilor (English Law):</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li>Administratorul nu va fi răspunzător în fața niciunui utilizator sau terț pentru nicio daună directă, indirectă, incidentă, specială, punitivă sau subsecventă rezultată din utilizarea, interpretarea sau încrederea acordată rapoartelor generate de AI.</li>
+                            <li><b>PLAFON REZIDUAL DE SIGURANȚĂ:</b> Răspunderea totală cumulată a administratorului pentru orice pretenție apărută din sau în legătură cu utilizarea acestui site este limitată strict la o sumă fixă de <b>10 GBP (zece lire sterline)</b>, sumă recunoscută de utilizator ca fiind proporțională și echitabilă, eliminând riscul asociat prezenței reclamelor comerciale.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">6. INDEMNIZARE, ANTI-HĂRȚUIRE ȘI CHELTUIELI DE JUDECATĂ</h3>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><b>6.1. OBLIGAȚIA ÎN CAZ DE PROCESE NEFONDATE:</b> Dacă un utilizator inițiază o acțiune în instanță împotriva administratorului încălcând clauzele asumate, iar acțiunea sa este respinsă sau anulată, utilizatorul se obligă necondiționat să achite integral toate cheltuielile de judecată efectuate de administrator (onorariile avocaților/solicitors din UK implicați în apărare, taxele de curte, costurile de transport).</li>
+                            <li><b>6.2. CLAUZĂ PENALĂ PENTRU CAMPANII DE DENIGRARE:</b> Utilizatorul se obligă să nu inițieze și să nu participe la nicio campanie publică de hărțuire, denigrare sau defăimare împotriva Platformei sau a administratorului (pe rețele sociale, forumuri sau Linktree). În caz de încălcare, în baza principiului daunelor pre-evaluate (Liquidated Damages), utilizatorul se obligă irevocabil să achite administratorului daune-interese în cuantum fix de <b>1.000 GBP pentru fiecare postare hărțuitoare distinctă</b>.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">7. RENUNȚAREA LA PROCESE COLECTIVE (CLASS ACTION WAIVER)</h3>
+                        <p>Orice procedură se va desfășura strict pe bază individuală. Utilizatorul renunță în mod expres la dreptul de a participa ca reclamant sau membru într-un proces colectiv (Class Action) în fața oricărei instanțe din lume.</p>
+                    </section>
+                `
+            },
+            EN: {
+                title: "⚖️ Terms and Conditions of Use",
+                caption: "Last Updated: June 2026 | Legal Venue: Milton Keynes, UK",
+                back: "← Back to Analysis",
+                footer: "🛡️ Freelancer Contract Assistant | Owned by IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                content: `
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">1. ACCEPTANCE OF TERMS AND EXCLUSIVE JURISDICTION</h3>

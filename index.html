@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contract Negotiation Assistant</title>
+    <meta name="google-adsense-account" content="ca-pub-3528838516008000">
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        body { background-color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .feature-card { background-color: #ffffff; padding: 16px; border-radius: 12px; border-left: 4px solid #38bdf8; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col md:flex-row min-h-screen">
+    <!-- 1. BARĂ LATERALĂ -->
+    <aside class="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-5 flex flex-col justify-between shadow-xs shrink-0 z-10">
+        <div class="space-y-6">
+            <div class="flex items-center gap-2 font-black text-xl text-indigo-600 tracking-tight">
+                <span>📄</span> <span>Contract Shield</span>
+            </div>
+            
+            <nav class="grid grid-cols-2 gap-2 md:flex md:flex-col md:space-y-1">
+    <a href="index.html" class="flex items-center gap-2 p-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-bold text-sm">🔍 <span data-i18n="nav_analysis">Analysis</span></a>
+    <a href="contact.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">💬 <span data-i18n="nav_contact">Contact</span></a>
+    <a href="termeni.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">⚖️ <span data-i18n="nav_terms">Terms of Use</span></a>
+    <a href="politica.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">🔒 <span data-i18n="nav_privacy">Privacy Policy</span></a>
+</nav>
+          <!-- Zona de Reclamă din Sidebar -->
+            <div class="w-full text-center py-2 border-t border-slate-100 hidden md:block">
+                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-1">Advertisement</p>
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:100%;height:250px"
+                     data-ad-client="ca-pub-3528838516008000"
+                     data-ad-slot="8000_SIDEBAR_AD"></ins>
+            </div>
+
+            <!-- Setări de limbă și cheie API -->
+            <div class="pt-4 border-t border-slate-100 space-y-3">
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="api_label">Gemini API Key</label>
+                <input type="password" id="api-key-input" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="AIzaSy...">
+                <p id="api-status" class="text-[11px] text-amber-600 font-medium leading-relaxed" data-i18n="side_d">🔑 Please enter your Gemini API Key below to unlock analysis.</p>
+            </div>
+        </div>
+        <div class="space-y-3 pt-4 border-t border-slate-100 mt-4 md:mt-0">
+            <div>
+                <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Language / Limba</label>
+                <select id="lang-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                    <option value="EN">English (EN)</option>
+                    <option value="RO">Română (RO)</option>
+                </select>
+            </div>
+            <a href="https://linktr.ee" target="_blank" class="block text-center bg-red-500 hover:bg-red-600 text-white font-bold p-2.5 rounded-xl text-xs transition shadow-sm" data-i18n="btn_donate">☕ Donate</a>
+        </div>
+    </aside>
+    <!-- 2. CONȚINUTUL PRINCIPAL -->
+    <main class="flex-1 p-4 md:p-8 max-w-4xl mx-auto w-full space-y-6 flex flex-col justify-between">
+        <div class="space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start gap-4 border-b border-slate-100 pb-4">
+                <div>
+                    <h1 id="main-title" class="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-900 mb-1">📄 Contract Negotiation Assistant</h1>
+                    <p id="main-subtitle" class="text-slate-500 text-sm md:text-base">Protect your business. Identify hidden clauses, contractual risks, and renegotiate with confidence.</p>
+                </div>
+                <button id="open-ghid-btn" class="bg-white border border-slate-200 text-slate-700 text-xs font-bold px-3 py-2 rounded-xl hover:bg-slate-50 transition shadow-xs shrink-0" data-i18n="b_ghid">📖 User Guide</button>
+            </div>
+
+            <!-- Caseta Disclaimer Obligatorie -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-xl text-xs md:text-sm text-blue-900 font-medium shadow-2xs" id="disclaimer-box" data-i18n="avertisment_b2b">
+                ⚠️ <b>Legal Disclaimer:</b> This platform is an experimental AI-based tool intended strictly for general informational purposes.
+            </div>
+            <!-- Caseta Ghid de Îndrumare -->
+            <div id="ghid-container" class="bg-slate-100/60 border border-slate-200 rounded-2xl p-4 space-y-3">
+                <p class="text-xs font-bold text-slate-700 flex items-center gap-1" id="lbl-ghid-title" data-i18n="ghid">💡 How to use this tool: This site acts as an informational copilot. Generated results are strictly indicative.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="feature-card text-xs text-slate-600 leading-relaxed shadow-3xs" data-i18n="c1"><b>💡 Guidance Guide</b><br>Translates complicated contractual clauses into simple terms.</div>
+                    <div class="feature-card text-xs text-slate-600 leading-relaxed shadow-3xs" data-i18n="c2"><b>🚩 Hidden Clauses Alert</b><br>Flags disproportionate penalties or unfair terms.</div>
+                    <div class="feature-card text-xs text-slate-600 leading-relaxed shadow-3xs" data-i18n="c3"><b>🗣️ Negotiation Ideas</b><br>Provides you with polite arguments and wordings.</div>
+                </div>
+            </div>
+
+            <!-- Zona de Upload -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs space-y-4">
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider" data-i18n="up_t">Upload document (PDF, DOCX, XLSX, TXT):</label>
+                    <input type="file" id="file-upload" class="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 border border-slate-200 p-1.5 rounded-xl bg-slate-50 cursor-pointer" accept=".pdf,.docx,.xlsx,.txt">
+                </div>
+                <div class="space-y-1.5">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider" data-i18n="tx_t">Or enter text manually:</label>
+                    <textarea id="text-input" class="w-full min-h-[140px] border border-slate-200 rounded-xl p-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none placeholder-slate-400 text-xs md:text-sm transition" placeholder="Insert contract text here..."></textarea>
+                </div>
+                <!-- Căsuțe Acceptare Termeni -->
+                <div id="lock-notice" class="bg-amber-50 text-amber-800 text-xs font-semibold p-3 rounded-xl border border-amber-200" data-i18n="blocat_text">
+                    🔒 To access upload functions and AI analysis, you must first check the box to accept the Terms above.
+                </div>
+                
+                <div class="pt-1">
+                    <label class="flex items-start gap-2.5 text-xs text-slate-600 cursor-pointer select-none font-medium">
+                        <input type="checkbox" id="terms-check" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500">
+                        <span data-i18n="bifa_text">I have read, understand, and agree to the Terms of Use and Privacy Policy (GDPR).</span>
+                    </label>
+                </div>
+
+                <button id="submit-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold p-3.5 rounded-xl text-xs md:text-sm uppercase tracking-wider transition shadow-md shadow-indigo-100 opacity-50 cursor-not-allowed hidden" disabled data-i18n="b_start">
+                    🚀 Start Intelligent Analysis
+                </button>
+            </div>
+            <!-- Zona Afișare Raport Generat -->
+            <div id="report-container" class="hidden bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
+                <div class="flex justify-between items-center border-b border-slate-100 pb-2.5">
+                    <h2 class="text-md font-bold text-slate-900" data-i18n="rap_t">🔍 Contractual Audit Report</h2>
+                    <button id="download-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold py-1.5 px-3 rounded-xl transition shadow-xs" data-i18n="b_down">Download Report (.txt)</button>
+                </div>
+                <div id="report-text" class="text-xs md:text-sm text-slate-700 leading-relaxed whitespace-pre-wrap bg-slate-50 p-4 rounded-xl border border-slate-100 font-medium"></div>
+                
+                <!-- Reclama inferioară AdSense -->
+                <div class="w-full text-center pt-3 border-t border-slate-100">
+                    <p class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mb-1">Advertisement</p>
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:100%;height:90px"
+                         data-ad-client="ca-pub-3528838516008000"
+                         data-ad-slot="8000_FINAL_AD"></ins>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-[11px] text-slate-400 font-medium border-t border-slate-100 pt-5 mt-10" id="main-subsol" data-i18n="subsol">
+            🛡️ Contract Assistant | Owned by IULIAN ICHIM-UNGUREANU (Liak Studio)
+        </footer>
+    </main>
+
+    <!-- 3. POPUP MODAL PENTRU USER GUIDE -->
+    <div id="ghid-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 space-y-4 shadow-xl max-h-[85vh] overflow-y-auto relative">
+            <button id="close-ghid-btn" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl font-bold focus:outline-none">&times;</button>
+            <div id="modal-content" class="text-xs md:text-sm text-slate-700 leading-relaxed space-y-4"></div>
+        </div>
+    </div>
+    <script src="https://cloudflare.com"></script>
+    <script src="https://cloudflare.com"></script>
+    <script src="https://cloudflare.com"></script>
+
+    <script>
+        const t = {
+            RO: {
+                "titlu": "📄 Asistent de Negociere Contractuală",
+                "subtitlu": "Protejează-ți drepturile. Identifică clauzele abuzive ascunse și renegociază de la egal la egal.",
+                "avertisment_b2b": "⚠️ <b>Disclaimer Legal:</b> Această platformă este un instrument experimental bazat pe AI, destinat informării generale și educației contractuale.",
+                "bifa_text": "Am citit, înțeleg și accept în mod exprimat Termenii de Utilizare și Politica de Confidențialitate (GDPR).",
+                "blocat_text": "🔒 Pentru a accesa funcțiile de upload și analiza AI, trebuie mai întâi să bifați căsuța de acceptare a Termenilor de mai sus.",
+                "ghid": "💡 <b>Cum folosim acest instrument:</b> Acest site funcționează ca un copilot informativ. Rezultatele generate sunt strict orientative.",
+                "c1": "<b>💡 Ghid de Îndrumare</b><br>Traduce clauzele contractuale complicate în cuvinte simple.",
+                "c2": "<b>🚩 Alertă Clauze Ascunse</b><br>Semnalează penalitățile disproporționate sau termenele abuzive.",
+                "c3": "<b>🗣️ Idei de Renegociere</b><br>Îți oferă argumente și formulări politicoase.",
+                "side_d": "🔑 Introduceți cheia dvs. Gemini API Key în căsuța de mai jos pentru a debloca analiza.",
+                "side_s": "🚀 Cheie personală activată cu succes!",
+                "up_t": "Încarcă documentul (PDF, DOCX, XLSX, TXT):",
+                "tx_t": "Sau introdu textul clauzelor suspecte manual:",
+                "b_start": "Pornește Analiza Inteligentă",
+                "b_down": "Descarcă Raportul (.txt)",
+                "rap_t": "🔍 Raport de Audit Contractual",
+                "btn_donate": "☕ Donatie",
+                "api_label": "Cheie Gemini API",
+                "nav_analysis": "Analiză", "nav_contact": "Contact", "nav_terms": "Termeni", "nav_privacy": "Politică",
+                "b_ghid": "📖 Ghid de Utilizare",
+                "spinner": "⏳ AI-ul scanează textul pentru riscuri contractuale...",
+                "subsol": "🛡️ Asistent Contracte Freelanceri | Deținut de IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                "prompt": "Ești un algoritm automat de scanare textuală și un asistent digital de tip scut contractual pentru business. NU ești avocat și NU oferi consultanță juridică. Analizează textul primit și identifică riscurile comerciale evidente. ATENȚIE: Folosește un limbaj extrem de simplu, clar și pe înțelesul unui om fără studii sau fără experiență (ca pentru cineva cu 4 clase). Evită cuvintele complicate de avocat și explică capcanele prin exemple băbești. Structurează rezultatul în ROMÂNĂ astfel: 1. Nume Risc Comercial (scris simplu), 2. Clauză originală, 3. Traducere pe înțelesul tuturor (explicat super simplu), 4. De ce este o capcană periculoasă (ce poți păți/cum poți pierde bani), 5. Idee simplă cum să ceri modificarea ei."
+            },
+            EN: {
+                "titlu": "📄 Contract Negotiation Assistant",
+                "subtitlu": "Protect your business. Identify hidden clauses, contractual risks, and renegotiate with confidence.",
+                "avertisment_b2b": "⚠️ <b>Legal Disclaimer:</b> This platform is an experimental AI-based tool intended strictly for general informational purposes.",
+                "bifa_text": "I have read, understand, and agree to the Terms of Use and Privacy Policy (GDPR).",
+                "blocat_text": "🔒 To access upload functions and AI analysis, you must first check the box to accept the Terms above.",
+                "ghid": "💡 <b>How to use this tool:</b> This site acts as an informational copilot. Generated results are strictly indicative.",
+                "c1": "<b>💡 Guidance Guide</b><br>Translates complicated contractual clauses into simple terms.",
+                "c2": "<b>🚩 Hidden Clauses Alert</b><br>Flags disproportionate penalties or unfair terms.",
+                "c3": "<b>🗣️ Negotiation Ideas</b><br>Provides you with polite arguments and wordings.",
+                "side_d": "🔑 Please enter your Gemini API Key in the box below to unlock the analysis.",
+                "side_s": "🚀 Personal key activated successfully!",
+                "up_t": "Upload document (PDF, DOCX, XLSX, TXT):",
+                "tx_t": "Or enter text manually:",
+                "b_start": "Start Intelligent Analysis",
+                "b_down": "Download Report (.txt)",
+                "rap_t": "🔍 Contractual Audit Report",
+                "btn_donate": "☕ Donate",
+                "api_label": "Gemini API Key",
+                "nav_analysis": "Analysis", "nav_contact": "Contact", "nav_terms": "Terms of Use", "nav_privacy": "Privacy Policy",
+                "b_ghid": "📖 User Guide",
+                "spinner": "⏳ AI is scanning text for contractual risks...",
+                "subsol": "🛡️ Freelancer Contract Assistant | Owned by IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                "prompt": "You are an automated text scanning algorithm and a digital contract shield assistant for business. You are NOT a lawyer and you DO NOT provide legal advice. Analyze the text and identify obvious commercial risks. ATTENTION: Use an extremely simple, clear language that anyone can understand, avoiding complex legal jargon. Explain the traps using everyday, simple examples. Structure the report in ENGLISH: 1. Commercial Risk Name (plain language), 2. Original Clause, 3. Super Simple Translation (plain terms), 4. Why it is a dangerous trap (how you can lose money/get hurt), 5. Simple idea on how to ask for a change."
+            }
+        };
+
+        let currentLang = 'EN';
+        let extractedText = "";
+
+        const langSelect = document.getElementById('lang-select');
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[lang][key]) el.innerHTML = t[lang][key];
+            });
+            document.getElementById('main-title').innerHTML = t[lang]['titlu'];
+            document.getElementById('main-subtitle').innerText = t[lang]['subtitlu'];
+            document.getElementById('disclaimer-box').innerHTML = t[lang]['avertisment_b2b'];
+            document.getElementById('lbl-ghid-title').innerHTML = t[lang]['ghid'];
+            document.getElementById('main-subsol').innerHTML = t[lang]['subsol'];
+            updateModalContent();
+        }
+        langSelect.addEventListener('change', (e) => updateLanguage(e.target.value));
+
+        const termsCheck = document.getElementById('terms-check');
+        const submitBtn = document.getElementById('submit-btn');
+        const lockNotice = document.getElementById('lock-notice');
+        const apiKeyInput = document.getElementById('api-key-input');
+        const apiStatus = document.getElementById('api-status');
+
+        termsCheck.addEventListener('change', function() {
+            if(this.checked) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed', 'hidden');
+                lockNotice.classList.add('hidden');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed', 'hidden');
+                lockNotice.classList.remove('hidden');
+            }
+        });
+
+        apiKeyInput.addEventListener('input', function() {
+            if(this.value.trim().length > 10) {
+                apiStatus.innerText = t[currentLang]['side_s'];
+                apiStatus.className = "text-[11px] text-green-600 font-bold";
+            } else {
+                apiStatus.innerText = t[currentLang]['side_d'];
+                apiStatus.className = "text-[11px] text-amber-600 font-medium";
+            }
+        });
+
+        const modal = document.getElementById('ghid-modal');
+        document.getElementById('open-ghid-btn').addEventListener('click', () => modal.classList.remove('hidden'));
+        document.getElementById('close-ghid-btn').addEventListener('click', () => modal.classList.add('hidden'));
+        
+        function updateModalContent() {
+            const modalDiv = document.getElementById('modal-content');
+            if(currentLang === 'RO') {
+                modalDiv.innerHTML = `
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">🛠️ Cum funcționează aplicația:</h3>
+                    <p class="mb-3">1. Bifează căsuța GDPR. 2. Introdu cheia ta <b>Gemini API Key</b> în stânga. 3. Încarcă fișierul sau scrie textul manual și apasă pe buton.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">🔑 Obținere Cheie API (100% Gratuit):</h3>
+                    <p>Intră pe <a href="https://google.dev" target="_blank" class="text-indigo-600 underline font-bold">Google AI Studio</a>, loghează-te cu contul tău de Gmail și apasă pe <b>"Get API key"</b> apoi pe <b>"Create API key"</b>. Copiază codul lung și pune-l în aplicație.</p>
+                `;
+            } else {
+                modalDiv.innerHTML = `
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">🛠️ How it works:</h3>
+                    <p class="mb-3">1. Check the GDPR box. 2. Paste your <b>Gemini API Key</b> on the left. 3. Upload a file or paste text manually and press the button.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1">🔑 Get an API Key (100% Free):</h3>
+                    <p>Go to <a href="https://google.dev" target="_blank" class="text-indigo-600 underline font-bold">Google AI Studio</a>, login with your Gmail, click <b>"Get API key"</b> then <b>"Create API key"</b>. Copy the code string and paste it here.</p>
+                `;
+            }
+        }
+        submitBtn.addEventListener('click', async () => {
+            const apiKey = apiKeyInput.value.trim();
+            const manualText = document.getElementById('text-input').value.trim();
+            const finalConversationalText = manualText || extractedText;
+
+            if(!apiKey) {
+                alert(currentLang === 'RO' ? "❌ Introduceți o cheie API!" : "❌ Please enter an API Key!");
+                return;
+            }
+            if(!finalConversationalText) {
+                alert(currentLang === 'RO' ? "❌ Introduceți text sau un fișier!" : "❌ Please enter text or upload a file!");
+                return;
+            }
+
+            submitBtn.innerText = t[currentLang]['spinner'];
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(`https://googleapis.com{apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `${t[currentLang]['prompt']}\n\nDOCUMENT:\n${finalConversationalText}` }] }]
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    let protectDisclaimer = currentLang === 'RO' ? 
+                        "⚠️ **NOTĂ DE SIGURANȚĂ JURIDICĂ:**\nAcest raport este generat de AI și are scop informativ. NU constituie consultanță juridică autorizată. Consultați un cabinet de avocatură înscris în Barou.\n\n---\n\n" :
+                        "⚠️ **IMPORTANT LEGAL DISCLAIMER:**\nThis report is AI-generated and for informational purposes only. It DOES NOT constitute legal advice. Consult a licensed attorney.\n\n---\n\n";
+                    
+                    const aiResult = data.candidates[0].content.parts[0].text;
+                    document.getElementById('report-text').innerText = protectDisclaimer + aiResult;
+                    document.getElementById('report-container').classList.remove('hidden');
+                    document.getElementById('report-container').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert("API Error / Cheia nu este configurată corect în Google AI Studio.");
+                }
+            } catch (error) {
+                alert("API Connection Error / Conexiune eșuată.");
+            } finally {
+                submitBtn.innerText = t[currentLang]['b_start'];
+                submitBtn.disabled = false;
+            }
+        });
+
+        document.getElementById('file-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            const ext = file.name.split('.').pop().toLowerCase();
+
+            if (ext === 'txt') {
+                reader.onload = function(e) { extractedText = e.target.result; };
+                reader.readAsText(file);
+            } else if (ext === 'docx') {
+                reader.onload = function(e) {
+                    mammoth.extractRawText({arrayBuffer: e.target.result}).then(res => { extractedText = res.value; });
+                };
+                reader.readAsArrayBuffer(file);
+            } else if (ext === 'xlsx') {
+                reader.onload = function(e) {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type: 'array'});
+                    extractedText = workbook.SheetNames.map(sheet => XLSX.utils.sheet_to_txt(workbook.Sheets[sheet])).join('\n');
+                };
+                reader.readAsArrayBuffer(file);
+            } else if (ext === 'pdf') {
+                reader.onload = function(e) {
+                    const typedarray = new Uint8Array(e.target.result);
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cloudflare.com';
+                    pdfjsLib.getDocument(typedarray).promise.then(pdf => {
+                        let countPromises = [];
+                        for (let j = 1; j <= pdf.numPages; j++) {
+                            countPromises.push(pdf.getPage(j).then(page => page.getTextContent().then(text => text.items.map(s => s.str).join(' '))));
+                        }
+                        Promise.all(countPromises).then(texts => { extractedText = texts.join('\n'); });
+                    });
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        });
+
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const text = document.getElementById('report-text').innerText;
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const anchor = document.createElement('a');
+            anchor.download = "Audit_Report.txt";
+            anchor.href = window.URL.createObjectURL(blob);
+            anchor.click();
+        });
+
+        updateLanguage('EN');
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Contract Shield</title>
+    <!-- Tailwind CSS pentru design modern -->
+    <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 p-6 md:p-12 font-sans flex flex-col min-h-screen justify-between">
+
+    <div class="max-w-3xl mx-auto bg-white p-6 md:p-12 rounded-2xl border border-gray-200 shadow-sm space-y-6 w-full">
+        <!-- Antet și Selector de Limbă local -->
+        <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+            <a href="../index.html" class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-1">← <span id="back-txt">Back to Analysis / Înapoi</span></a>
+            <select id="lang-page-select" class="bg-gray-50 border border-gray-200 rounded-xl p-2 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="RO">Română (RO)</option>
+                <option value="EN">English (EN)</option>
+            </select>
+        </div>
+
+        <!-- CONȚINUT DINAMIC SECȚIUNI -->
+        <article class="space-y-6">
+            <h1 id="p-title" class="text-3xl font-black text-gray-900 tracking-tight"></h1>
+            <p id="p-caption" class="text-xs font-bold text-gray-400 uppercase tracking-wider"></p>
+            <hr class="border-gray-100">
+            <div id="p-content" class="text-sm leading-relaxed text-gray-600 space-y-5"></div>
+        </article>
+    </div>
+
+    <!-- Subsol de pagină -->
+    <footer class="text-center text-[11px] text-gray-400 font-medium border-t border-gray-100 pt-6 mt-12 w-full max-w-3xl mx-auto" id="p-footer"></footer>
+
+    <!-- LOGICA DE TRADUCERE INTERNĂ -->
+    <script>
+        const datePrivat = {
+            RO: {
+                title: "🔒 Politica de Confidențialitate",
+                caption: "Ultima actualizare: Iunie 2026 | Conformitate cu UK-GDPR & GDPR (UE)",
+                back: "← Înapoi la Analiză",
+                footer: "🛡️ Asistent Contracte Freelanceri | Deținut de IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                content: `
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">1. PRINCIPIUL DE BAZĂ: ZERO STOCARE DATE CONTRACTUALE</h3>
+                        <p>Confidențialitatea documentelor dumneavoastră comerciale este prioritatea absolută a acestei Platforme:</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li><b>Fără baze de date:</b> Platforma funcționează fără un modul de stocare de tip bază de date. Niciun server nu colectează, nu salvează și nu arhivează textul contractelor încărcate sau introduse manual.</li>
+                            <li><b>Procesare volatilă in-memory:</b> Documentele sunt procesate exclusiv în memoria temporară a browserului (sesiune) pe durata rulării analizei. În secunda în care închideți tab-ul sau fereastra de browser, toate textele sunt șterse definitiv, instantaneu și irevocabil.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">2. DATE COLECTATE ȘI SCOPUL PROCESĂRII</h3>
+                        <p>Platforma nu solicită crearea unui cont de utilizator și nu colectează date de identificare directă (nume, prenume, adrese de email, numere de telefon) pentru utilizarea instrumentului AI.</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li><b>Chei API Personale:</b> Dacă alegeți să introduceți cheia dumneavoastră personală (Google Gemini API Key), aceasta este utilizată exclusiv local pentru a autoriza cererile directe către infrastructura Google. Cheia nu este trimisă către administrator și nu este stocată.</li>
+                            <li><b>Date tehnice de sesiune:</b> Pe durata vizitei, pot fi procesate date tehnice temporare (cum ar fi adresa IP anonimizată, tipul browserului sau logurile de eroare de pe server) cu unicul scop de a asigura stabilitatea tehnică și securitatea platformei împotriva atacurilor cibernetice.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">3. SERVICII FURNIZATE DE TERȚI ȘI PUBLICITATE (GOOGLE ADMOB)</h3>
+                        <p>Pentru a asigura auto-susținerea financiară, mentenanță tehnică și viitoarele actualizări, Platforma poate afișa reclame prin intermediul serviciului Google AdMob.</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li><b>Module cookie de publicitate:</b> Google AdMob poate utiliza module cookie sau identificatori unici de publicitate pentru a difuza reclame bazate pe vizitele anterioare ale utilizatorilor pe acest website sau pe alte site-uri de pe internet.</li>
+                            <li><b>Controlul utilizatorului:</b> Puteți opta pentru dezactivarea publicității personalizate accesând setările Google Ads sau modificând setările de confidențialitate și cookie-uri ale browserului dumneavoastră.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">4. DONAȚII ȘI LINK-URI EXTERNE (LINKTREE)</h3>
+                        <p>Platforma integrează link-uri către servicii terțe externe (cum ar fi Linktree) pentru facilitarea donațiilor opționale sau interacțiunea pe rețelele sociale.</p>
+                        <p>Administratorul acestei Platforme nu colectează și nu controlează datele financiare sau personale introduse de dumneavoastră pe platformele terțe (PayPal, Stripe etc.). Vă recomandăm să consultați politicile de confidențialitate ale acelor servicii externe.</p>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">5. DREPTURILE DUMNEAVOASTRĂ CONFORM GDPR / UK-GDPR</h3>
+                        <p>Conform legislației privind protecția datelor, beneficiați de dreptul de acces, rectificare, ștergere sau restricționare a procesării. Cu toate acestea, având în vedere că Platforma aplică o politică strictă de zero stocare, administratorul nu deține înregistrări istorice și nu poate identifica sau extrage date referitoare la contractele analizate în sesiunile anterioare.</p>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">6. LEGEA APLICABILĂ ȘI JURISDICȚIA</h3>
+                        <p>Orice solicitare sau litigiu legat de prezenții termeni de confidențialitate va fi guvernat de legile din Anglia și Țara Galilor și va fi trimis spre soluționare exclusivă instanțelor competente din Milton Keynes, Regatul Unit.</p>
+                    </section>
+                `
+            },
+            EN: {
+                title: "🔒 Privacy Policy",
+                caption: "Last Updated: June 2026 | UK-GDPR & EU-GDPR Compliance",
+                back: "← Back to Analysis",
+                footer: "🛡️ Freelancer Contract Assistant | Owned by IULIAN ICHIM-UNGUREANU (Liak Studio)",
+                content: `
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">1. CORE PRINCIPLE: ZERO CONTRACTUAL DATA STORAGE</h3>
+                        <p>The confidentiality of your commercial documents is the absolute priority of this Platform:</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li><b>No Databases:</b> The Platform operates without any database storage module. No server collects, saves, or archives the text of uploaded or manually entered contracts.</li>
+                            <li><b>Volatile In-Memory Processing:</b> Your documents are processed exclusively within the temporary memory (session) of your browser during the live analysis. The exact second you close the browser tab or window, all texts are permanently, instantly, and irrevocably deleted.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">2. DATA COLLECTED AND PURPOSE OF PROCESSING</h3>
+                        <p>The Platform does not require user accounts and does not collect direct identification data (first name, last name, email addresses, phone numbers) to use the AI tool.</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">
+                            <li><b>Personal API Keys:</b> If you choose to enter your personal Google Gemini API Key, it is used exclusively to authorize direct requests to Google's infrastructure. The key is not transmitted to the administrator and is not stored.</li>
+                            <li><b>Technical Session Data:</b> During your visit, temporary technical data (such as anonymized IP addresses, browser type, or server error logs) may be processed solely to ensure technical stability and security against cyber attacks.</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-2">
+                        <h3 class="text-base font-bold text-gray-900">3. THIRD-PARTY SERVICES AND ADVERTISING (GOOGLE ADMOB)</h3>
+                        <p>To ensure financial self-sustainment, technical maintenance, and future updates, the Platform may display advertisements through the Google AdMob service.</p>
+                        <ul class="list-disc pl-5 space-y-1 mt-1">

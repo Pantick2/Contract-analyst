@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback & Contact - Contract Shield</title>
+    <!-- Tailwind CSS pentru design modern -->
+    <script src="https://tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 p-6 md:p-12 font-sans flex flex-col min-h-screen justify-between">
+
+    <div class="max-w-xl mx-auto bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm space-y-6 w-full">
+        <!-- Antet și Selector de Limbă local -->
+        <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+            <a href="../index.html" class="text-sm font-bold text-indigo-600 hover:underline flex items-center gap-1">← <span id="back-txt">Back to Analysis / Înapoi</span></a>
+            <select id="lang-page-select" class="bg-gray-50 border border-gray-200 rounded-xl p-2 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="RO">Română (RO)</option>
+                <option value="EN">English (EN)</option>
+            </select>
+        </div>
+
+        <div class="space-y-2">
+            <h1 id="c-title" class="text-2xl font-black text-gray-900 tracking-tight">💬 Feedback & Contact</h1>
+            <p id="c-subtitle" class="text-sm text-gray-500 leading-relaxed"></p>
+        </div>
+
+        <!-- FORMULARUL DE CONTACT CONECTAT LA FORMSUBMIT -->
+        <form id="contact-form" action="https://formsubmit.co" method="POST" class="space-y-4 pt-2">
+            <!-- Setări ascunse FormSubmit (Subiect & Captcha conform logicii tale) -->
+            <input type="hidden" name="_subject" id="form-subject" value="[Asistent Contracte] Mesaj Nou">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="space-y-1">
+                <label id="lbl-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider"></label>
+                <input type="text" name="Nume" id="input-name" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+            </div>
+
+            <div class="space-y-1">
+                <label id="lbl-email" class="block text-xs font-bold text-gray-700 uppercase tracking-wider"></label>
+                <input type="email" name="Email" id="input-email" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+            </div>
+
+            <div class="space-y-1">
+                <label id="lbl-type" class="block text-xs font-bold text-gray-700 uppercase tracking-wider"></label>
+                <select name="Tip Mesaj" id="select-type" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-700 font-medium">
+                    <!-- Opțiunile se injectează din JS în funcție de limbă -->
+                </select>
+            </div>
+
+            <div class="space-y-1">
+                <label id="lbl-message" class="block text-xs font-bold text-gray-700 uppercase tracking-wider"></label>
+                <textarea name="Mesaj" id="text-message" required class="w-full min-h-[120px] bg-gray-50 border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm transition"></textarea>
+            </div>
+
+            <!-- Casete Status / Alerte descriptive (Streamlit info/success simulation) -->
+            <div id="status-box" class="p-3 rounded-xl text-xs font-semibold"></div>
+
+            <button type="submit" id="btn-submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold p-3.5 rounded-xl transition shadow-lg shadow-indigo-100 uppercase tracking-wider text-xs">
+                🚀 Send Message
+            </button>
+        </form>
+    </div>
+
+    <!-- Subsol de pagină -->
+    <footer class="text-center text-[11px] text-gray-400 font-medium border-t border-gray-100 pt-6 mt-12 w-full max-w-xl mx-auto" id="c-footer"></footer>
+    <!-- LOGICA FORMULARULUI BILINGV -->
+    <script>
+        const dictionarContact = {
+            RO: {
+                subtitle: "Ai întâmpinat o problemă sau vrei să trimiți un feedback? Completează câmpurile de mai jos.",
+                name_lbl: "Numele tău sau Alias (Freelancer / Firmă):",
+                email_lbl: "Adresa ta de email (pentru a-ți putea răspunde):",
+                type_lbl: "Tipul mesajului:",
+                msg_lbl: "Mesajul tău:",
+                btn_txt: "🚀 Trimite Mesajul",
+                back: "← Înapoi la Analiză",
+                footer: "🛡️ Asistent Contracte Freelanceri | Deținut de IULIAN ICHIM-UNGUREANU (Pantick)",
+                sub_prefix: "[Asistent Contracte] Mesaj Nou: ",
+                info_complete: "💡 Completează toate câmpurile pentru a activa trimiterea.",
+                success_valid: "✅ Formularul este completat corect!",
+                warn_email: "⚠️ Adresa de email nu este validă.",
+                options: ["Feedback / Sugestie", "Raportare Eroare (Bug)", "Întrebare Generală"]
+            },
+            EN: {
+                subtitle: "Encountered an issue or want to send feedback? Please fill out the fields below.",
+                name_lbl: "Your Name or Alias (Freelancer / Company):",
+                email_lbl: "Your email address (to reply back to you):",
+                type_lbl: "Message Type:",
+                msg_lbl: "Your Message:",
+                btn_txt: "🚀 Send Message",
+                back: "← Back to Analysis",
+                footer: "🛡️ Freelancer Contract Assistant | Owned by IULIAN ICHIM-UNGUREANU (Pantick)",
+                sub_prefix: "[Contract Assistant] New Message: ",
+                info_complete: "💡 Complete all fields to activate the send button.",
+                success_valid: "✅ Form is completed correctly!",
+                warn_email: "⚠️ The email address is not valid.",
+                options: ["Feedback / Suggestion", "Bug Report", "General Question"]
+            }
+        };
+
+        const selector = document.getElementById('lang-page-select');
+        const form = document.getElementById('contact-form');
+        const inputName = document.getElementById('input-name');
+        const inputEmail = document.getElementById('input-email');
+        const selectType = document.getElementById('select-type');
+        const textMessage = document.getElementById('text-message');
+        const statusBox = document.getElementById('status-box');
+        const btnSubmit = document.getElementById('btn-submit');
+        const hiddenSubject = document.getElementById('form-subject');
+
+        let limbaCurenta = 'RO';
+
+        function valideazaFormular() {
+            const numeOk = inputName.value.trim().length > 0;
+            const emailText = inputEmail.value.trim();
+            const mesajOk = textMessage.value.trim().length > 0;
+            
+            if (!numeOk || !emailText || !mesajOk) {
+                statusBox.className = "p-3 rounded-xl text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-100";
+                statusBox.innerHTML = dictionarContact[limbaCurenta].info_complete;
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
+                return;
+            }
+
+            if (!emailText.includes('@')) {
+                statusBox.className = "p-3 rounded-xl text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-100";
+                statusBox.innerHTML = dictionarContact[limbaCurenta].warn_email;
+                btnSubmit.disabled = true;
+                btnSubmit.classList.add('opacity-50', 'cursor-not-allowed');
+                return;
+            }
+
+            statusBox.className = "p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-100";
+            statusBox.innerHTML = dictionarContact[limbaCurenta].success_valid;
+            btnSubmit.disabled = false;
+            btnSubmit.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+
+        function renderContact(lang) {
+            limbaCurenta = lang;
+            
+            document.getElementById('c-subtitle').innerHTML = dictionarContact[lang].subtitle;
+            document.getElementById('lbl-name').innerHTML = dictionarContact[lang].name_lbl;
+            document.getElementById('lbl-email').innerHTML = dictionarContact[lang].email_lbl;
+            document.getElementById('lbl-type').innerHTML = dictionarContact[lang].type_lbl;
+            document.getElementById('lbl-message').innerHTML = dictionarContact[lang].msg_lbl;
+            document.getElementById('back-txt').innerHTML = dictionarContact[lang].back;
+            document.getElementById('c-footer').innerHTML = dictionarContact[lang].footer;
+            btnSubmit.innerHTML = dictionarContact[lang].btn_txt;
+
+            const indexSalvat = selectType.selectedIndex >= 0 ? selectType.selectedIndex : 0;
+            selectType.innerHTML = dictionarContact[lang].options.map(opt => `<option value="${opt}">${opt}</option>`).join('');
+            selectType.selectedIndex = indexSalvat;
+
+            hiddenSubject.value = dictionarContact[lang].sub_prefix + selectType.value;
+
+            valideazaFormular();
+        }
+
+        [inputName, inputEmail, textMessage].forEach(el => el.addEventListener('input', valideazaFormular));
+        selectType.addEventListener('change', () => {
+            hiddenSubject.value = dictionarContact[limbaCurenta].sub_prefix + selectType.value;
+            valideazaFormular();
+        });
+        
+        selector.addEventListener('change', (e) => renderContact(e.target.value));
+
+        renderContact('RO');
+    </script>
+</body>
+</html>
