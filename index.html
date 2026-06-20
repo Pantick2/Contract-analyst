@@ -6,38 +6,61 @@
     <title>Contract Negotiation Assistant</title>
     <meta name="google-adsense-account" content="ca-pub-3528838516008000">
     
-    <!-- Design Universal care se încarcă garantat pe orice telefon sau server -->
-    <link rel="stylesheet" href="https://jsdelivr.net">
+    <!-- Tailwind Stabil v3 -->
+    <script src="https://tailwindcss.com"></script>
     
-    <!-- Stiluri interne fixe (Forțăm culorile direct, fără să depindem de rețea) -->
+    <!-- Reguli fixe care repară așezarea pe coloane indiferent de browser -->
     <style>
-        body { background-color: #f8fafc !important; font-family: sans-serif; display: flex; flex-direction: column; }
-        @media (min-width: 768px) {
-            body { flex-direction: row; }
-            aside { width: 280px !important; min-height: 100vh; position: sticky; top: 0; }
+        body { background-color: #f8fafc !important; min-height: 100vh; margin: 0; padding: 0; }
+        .wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+        @media (min-width: 1024px) {
+            .wrapper { flex-direction: row; }
+            aside { width: 280px !important; position: fixed; top: 0; bottom: 0; left: 0; overflow-y: auto; }
+            .content-area { margin-left: 280px; display: flex; flex-direction: row; width: calc(100% - 280px); }
+            main { flex: 1; max-width: 700px; padding: 32px !important; }
+            .right-guide { width: 320px; position: fixed; top: 0; right: 0; bottom: 0; overflow-y: auto; background: #ffffff; border-left: 1px solid #e2e8f0; padding: 24px; }
         }
-        aside { background-color: #ffffff !important; border-right: 1px solid #dee2e6; padding: 20px; }
-        main { flex-1; padding: 30px; max-width: 900px; margin: 0 auto; w-full; }
-        .feature-card { background: #ffffff; padding: 15px; border-radius: 12px; border-left: 5px solid #0ea5e9; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 10px; }
-        .btn-indigo { background-color: #4f46e5 !important; color: #ffffff !important; font-weight: bold; border-radius: 10px; padding: 12px; border: none; width: 100%; }
-        .btn-indigo:hover { background-color: #4338ca !important; }
+        .feature-card { background: #ffffff; padding: 16px; border-radius: 12px; border-left: 4px solid #38bdf8; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="text-secondary">
+<body class="text-slate-800">
+    <div class="wrapper">
+        <!-- 1. BARĂ LATERALĂ STÂNGA -->
+        <aside class="bg-white border-b lg:border-b-0 lg:border-r border-slate-200 p-5 shrink-0 z-10">
+            <div class="flex flex-col h-full justify-between space-y-6">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2 font-black text-xl text-indigo-600 tracking-tight">
+                        <span>📄</span> <span>Contract Shield</span>
+                    </div>
+                    
+                    <nav class="flex flex-col space-y-1">
+                        <a href="index.html" class="flex items-center gap-2 p-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-bold text-sm">🔍 <span data-i18n="nav_analysis">Analysis</span></a>
+                        <a href="contact.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">💬 <span data-i18n="nav_contact">Contact</span></a>
+                        <a href="termeni.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">⚖️ <span data-i18n="nav_terms">Terms of Use</span></a>
+                        <a href="politica.html" class="flex items-center gap-2 p-2.5 text-slate-600 hover:bg-slate-50 rounded-xl font-medium text-sm transition">🔒 <span data-i18n="nav_privacy">Privacy Policy</span></a>
+                    </nav>
 
-    <!-- 1. BARĂ LATERALĂ -->
-    <aside class="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-5 flex flex-col justify-between shadow-xs shrink-0 z-10">
-        <div class="space-y-6">
-            <div class="flex items-center gap-2 font-black text-xl text-indigo-600 tracking-tight">
-                <span>📄</span> <span>Contract Shield</span>
+                    <div class="pt-4 border-t border-slate-100 space-y-2">
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="api_label">Gemini API Key</label>
+                        <input type="password" id="api-key-input" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none" placeholder="AIzaSy...">
+                        <p id="api-status" class="text-[11px] text-amber-600 font-medium leading-relaxed" data-i18n="side_d">🔑 Please enter your Gemini API Key below.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-3 pt-4 border-t border-slate-100">
+                    <div>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Language / Limba</label>
+                        <select id="lang-select" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <option value="EN">English (EN)</option>
+                            <option value="RO">Română (RO)</option>
+                        </select>
+                    </div>
+                    <a href="https://linktr.ee" target="_blank" class="block text-center bg-red-500 hover:bg-red-600 text-white font-bold p-2 rounded-xl text-xs transition shadow-xs" data-i18n="btn_donate">☕ Donate</a>
+                </div>
             </div>
-            
-           <nav class="nav flex-column gap-2 my-4">
-    <a href="index.html" class="nav-link active bg-light text-primary fw-bold p-2.5 rounded-3">🔍 <span data-i18n="nav_analysis">Analysis</span></a>
-    <a href="contact.html" class="nav-link text-dark p-2.5 rounded-3 hover:bg-light">💬 <span data-i18n="nav_contact">Contact</span></a>
-    <a href="termeni.html" class="nav-link text-dark p-2.5 rounded-3 hover:bg-light">⚖️ <span data-i18n="nav_terms">Terms of Use</span></a>
-    <a href="politica.html" class="nav-link text-dark p-2.5 rounded-3 hover:bg-light">🔒 <span data-i18n="nav_privacy">Privacy Policy</span></a>
-</nav>
+        </aside>
+
+        <div class="content-area flex-1 flex flex-col lg:flex-row">
 
           <!-- Zona de Reclamă din Sidebar -->
             <div class="w-full text-center py-2 border-t border-slate-100 hidden md:block">
