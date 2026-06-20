@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
-    <!-- 🌐 CODUL DE VERIFICARE GOOGLE ADSENSE -->
-    <meta name="google-adsense-account" content="ca-pub-3528838516008000">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contract Negotiation Assistant</title>
+    <meta name="google-adsense-account" content="ca-pub-3528838516008000">
     
-    <!-- CONEXIUNEA STABILĂ ȘI CORECTĂ TAILWIND v3 -->
-    <script src="https://tailwindcss.com"></script>
+    <!-- Design Universal care se încarcă garantat pe orice telefon sau server -->
+    <link rel="stylesheet" href="https://jsdelivr.net">
     
-    <!-- Stiluri inline de rezervă pentru a asigura culorile -->
+    <!-- Stiluri interne fixe (Forțăm culorile direct, fără să depindem de rețea) -->
     <style>
-        body { background-color: #f8fafc !important; font-family: ui-sans-serif, system-ui, sans-serif !important; }
-        aside { background-color: #ffffff !important; }
-        main { background-color: #f8fafc !important; }
+        body { background-color: #f8fafc !important; font-family: sans-serif; display: flex; flex-direction: column; }
+        @media (min-width: 768px) {
+            body { flex-direction: row; }
+            aside { width: 280px !important; min-height: 100vh; position: sticky; top: 0; }
+        }
+        aside { background-color: #ffffff !important; border-right: 1px solid #dee2e6; padding: 20px; }
+        main { flex-1; padding: 30px; max-width: 900px; margin: 0 auto; w-full; }
+        .feature-card { background: #ffffff; padding: 15px; border-radius: 12px; border-left: 5px solid #0ea5e9; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 10px; }
+        .btn-indigo { background-color: #4f46e5 !important; color: #ffffff !important; font-weight: bold; border-radius: 10px; padding: 12px; border: none; width: 100%; }
+        .btn-indigo:hover { background-color: #4338ca !important; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 flex flex-col md:flex-row min-h-screen">
+<body class="text-secondary">
+
     <!-- 1. BARĂ LATERALĂ -->
     <aside class="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-5 flex flex-col justify-between shadow-xs shrink-0 z-10">
         <div class="space-y-6">
